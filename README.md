@@ -1,2 +1,3 @@
 # safadometro
-An Android App
+
+![The problem](http://testedosafadao.stefanogirardelli.com/img/wesley.jpg)
