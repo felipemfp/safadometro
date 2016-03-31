@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.felipe.safadmetro.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Qual sua data de nascimento?"
+        android:id="@+id/textViewLabel" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/editTextDate"
+        android:layout_below="@+id/textViewLabel" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonCalculate"
+        android:layout_below="@+id/editTextDate"
+        android:text="Calcular"
+        android:layout_alignParentRight="true"
+        android:onClick="buttonCalculateClick"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonCalculate"
+        android:orientation="vertical"
+        android:id="@+id/linearLayoutAngel"
+        android:padding="20dp"
+        android:visibility="invisible">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="99%"
+            android:id="@+id/textViewPercentAngel"
+            android:textAlignment="center"
+            android:textSize="60dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ANJO"
+            android:id="@+id/textViewAngel"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutAngel"
+        android:orientation="vertical"
+        android:id="@+id/linearLayoutDevil"
+        android:padding="20dp"
+        android:visibility="invisible">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1%"
+            android:id="@+id/textViewPercentDevil"
+            android:textAlignment="center"
+            android:textSize="60dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VAGABUNDO"
+            android:id="@+id/textViewDevil"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
