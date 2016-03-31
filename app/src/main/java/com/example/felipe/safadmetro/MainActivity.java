@@ -1,5 +1,6 @@
 package com.example.felipe.safadmetro;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -99,11 +101,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void buttonCalculateClick(View v) {
+        hideKeyboard(this, v);
+
         String date = editTextDate.getText().toString();
+
         if (date == null || date.equals("")) {
             Toast.makeText(MainActivity.this, "Insira uma data", Toast.LENGTH_SHORT).show();
         }
-        else {
+        else if (checkDateInput(date)) {
             String[] dateSplitted = date.split("/");
             int day = Integer.parseInt(dateSplitted[0]);
             int month = Integer.parseInt(dateSplitted[1]);
@@ -135,9 +140,24 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this, "Data inválida", Toast.LENGTH_SHORT).show();
             }
         }
+        else {
+            Toast.makeText(MainActivity.this, "Formato inválido", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public int sum(int n) {
         return (1 + n) * ((n - 1 + 1) / 2);
+    }
+
+    public boolean checkDateInput(String str) {
+        return (str.length() == 8 || str.length() == 10)
+                && str.indexOf("/") == 2
+                && str.lastIndexOf("/") == 5
+                && str.split("/").length == 3;
+    }
+
+    public static void hideKeyboard(Context context, View view) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
