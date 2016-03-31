@@ -2,19 +2,18 @@
     <string name="app_name">Safadômetro</string>
     <string name="author_email">felipemfpontes@gmail.com</string>
 
-    <string name="navigation_drawer_open">Abrir navegação</string>
-    <string name="navigation_drawer_close">Fechar navegação</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Configurações</string>
+    <string name="action_settings">Settings</string>
 
+    <string name="good_label">LOVELY</string>
+    <string name="bad_label">WOMANIZER</string>
 
-    <string name="good_label">ANJO</string>
-    <string name="bad_label">VAGABUNDO</string>
+    <string name="birth_label">What is your birth date?</string>
+    <string name="submit_button">Calculate</string>
 
-    <string name="birth_label">Qual sua data de nascimento?</string>
-    <string name="submit_button">Calcular</string>
-
-    <string name="invalid_format">Formato inválido</string>
-    <string name="invalid_date">Data inválida</string>
-    <string name="empty_date">Insira uma data</string>
+    <string name="invalid_format">Invalid format</string>
+    <string name="invalid_date">Invalid date</string>
+    <string name="empty_date">Enter a date</string>
 </resources>
