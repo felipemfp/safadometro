@@ -23,11 +23,13 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private final String REPO_URL = "http://www.github.com/felipemfp/safadometro";
+
     private EditText editTextDate;
-    private TextView textViewPercentAngel;
-    private TextView textViewPercentDevil;
-    private LinearLayout linearLayoutAngel;
-    private LinearLayout linearLayoutDevil;
+    private TextView textViewPercentGood;
+    private TextView textViewPercentBad;
+    private LinearLayout linearLayoutGood;
+    private LinearLayout linearLayoutBad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +47,11 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        editTextDate = (EditText)findViewById(R.id.editTextDate);
-        textViewPercentAngel =(TextView)findViewById(R.id.textViewPercentAngel);
-        textViewPercentDevil =(TextView)findViewById(R.id.textViewPercentDevil);
-        linearLayoutAngel = (LinearLayout)findViewById(R.id.linearLayoutAngel);
-        linearLayoutDevil =(LinearLayout)findViewById(R.id.linearLayoutDevil);
+        editTextDate = (EditText) findViewById(R.id.editTextDate);
+        textViewPercentGood = (TextView) findViewById(R.id.textViewPercentGood);
+        textViewPercentBad = (TextView) findViewById(R.id.textViewPercentBad);
+        linearLayoutGood = (LinearLayout) findViewById(R.id.linearLayoutGood);
+        linearLayoutBad = (LinearLayout) findViewById(R.id.linearLayoutBad);
     }
 
     @Override
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_repo) {
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.github.com/felipemfp/safadometro"));
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(REPO_URL));
             startActivity(browserIntent);
         }
 
@@ -106,42 +108,38 @@ public class MainActivity extends AppCompatActivity
         String date = editTextDate.getText().toString();
 
         if (date == null || date.equals("")) {
-            Toast.makeText(MainActivity.this, "Insira uma data", Toast.LENGTH_SHORT).show();
-        }
-        else if (checkDateInput(date)) {
+            Toast.makeText(MainActivity.this, R.string.empty_date, Toast.LENGTH_SHORT).show();
+        } else if (checkDateInput(date)) {
             String[] dateSplitted = date.split("/");
             int day = Integer.parseInt(dateSplitted[0]);
             int month = Integer.parseInt(dateSplitted[1]);
             int year = Integer.parseInt(dateSplitted[2]);
 
             if (day > 0 && day < 32 && month > 0 && month < 13 && year > 0) {
-                double devil, angel;
+                double bad, good;
 
                 if (year > 1900) {
                     year -= 1900;
                 }
 
                 if (day == 6 && month == 9 && year == 88) {
-                    devil = 1.0;
-                    angel = 99.0;
-                }
-                else {
-                    devil = Math.floor((sum(month)) + ((year / 100.0) * (50 - day)));
-                    angel = 100 - devil;
+                    bad = 1.0;
+                    good = 99.0;
+                } else {
+                    bad = Math.floor((sum(month)) + ((year / 100.0) * (50 - day)));
+                    good = 100 - bad;
                 }
 
-                textViewPercentAngel.setText((int)angel + "%");
-                textViewPercentDevil.setText((int)devil + "%");
+                textViewPercentGood.setText((int) good + "%");
+                textViewPercentBad.setText((int) bad + "%");
 
-                linearLayoutAngel.setVisibility(View.VISIBLE);
-                linearLayoutDevil.setVisibility(View.VISIBLE);
+                linearLayoutGood.setVisibility(View.VISIBLE);
+                linearLayoutBad.setVisibility(View.VISIBLE);
+            } else {
+                Toast.makeText(MainActivity.this, R.string.invalid_date, Toast.LENGTH_SHORT).show();
             }
-            else {
-                Toast.makeText(MainActivity.this, "Data inválida", Toast.LENGTH_SHORT).show();
-            }
-        }
-        else {
-            Toast.makeText(MainActivity.this, "Formato inválido", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MainActivity.this, R.string.invalid_format, Toast.LENGTH_SHORT).show();
         }
     }
 

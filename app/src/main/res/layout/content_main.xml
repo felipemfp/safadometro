@@ -13,76 +13,77 @@
     tools:showIn="@layout/app_bar_main">
 
     <TextView
+        android:id="@+id/textViewLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Qual sua data de nascimento?"
-        android:id="@+id/textViewLabel" />
+        android:text="@string/birth_label" />
 
     <EditText
+        android:id="@+id/editTextDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="date"
+        android:layout_below="@+id/textViewLabel"
         android:ems="10"
-        android:id="@+id/editTextDate"
-        android:layout_below="@+id/textViewLabel" />
+        android:inputType="date"
+        android:maxLength="10" />
 
     <Button
+        android:id="@+id/buttonCalculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonCalculate"
-        android:layout_below="@+id/editTextDate"
-        android:text="Calcular"
         android:layout_alignParentRight="true"
-        android:onClick="buttonCalculateClick"/>
+        android:layout_below="@+id/editTextDate"
+        android:onClick="buttonCalculateClick"
+        android:text="@string/submit_button" />
 
     <LinearLayout
+        android:id="@+id/linearLayoutGood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonCalculate"
         android:orientation="vertical"
-        android:id="@+id/linearLayoutAngel"
         android:padding="20dp"
         android:visibility="invisible">
 
         <TextView
+            android:id="@+id/textViewPercentGood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="99%"
-            android:id="@+id/textViewPercentAngel"
             android:textAlignment="center"
-            android:textSize="60dp"/>
+            android:textSize="60dp" />
 
         <TextView
+            android:id="@+id/textViewGood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ANJO"
-            android:id="@+id/textViewAngel"
-            android:textAlignment="center"/>
+            android:text="@string/good_label"
+            android:textAlignment="center" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayoutBad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayoutAngel"
+        android:layout_below="@+id/linearLayoutGood"
         android:orientation="vertical"
-        android:id="@+id/linearLayoutDevil"
         android:padding="20dp"
         android:visibility="invisible">
 
-    <TextView
+        <TextView
+            android:id="@+id/textViewPercentBad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1%"
-            android:id="@+id/textViewPercentDevil"
             android:textAlignment="center"
-            android:textSize="60dp"/>
+            android:textSize="60dp" />
 
         <TextView
+            android:id="@+id/textViewBad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="VAGABUNDO"
-            android:id="@+id/textViewDevil"
-            android:textAlignment="center"/>
+            android:text="@string/bad_label"
+            android:textAlignment="center" />
 
     </LinearLayout>
 
