@@ -26,7 +26,7 @@ Make sure that you have **Android Studio**, then you should clone this repositor
 git clone https://github.com/felipemfp/safadometro.git
 ```
 
-### Installing
+### Running
 
 Just open `safadometro` folder as a Android Project on Android Studio.
 
