@@ -23,9 +23,11 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private final String REPO_URL = "http://www.github.com/felipemfp/safadometro";
+    private final String REPO_URL = "https://www.github.com/felipemfp/safadometro";
 
-    private EditText editTextDate;
+    private EditText editTextDay;
+    private EditText editTextMonth;
+    private EditText editTextYear;
     private TextView textViewPercentGood;
     private TextView textViewPercentBad;
     private LinearLayout linearLayoutGood;
@@ -47,7 +49,9 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        editTextDate = (EditText) findViewById(R.id.editTextDate);
+        editTextDay = (EditText) findViewById(R.id.editTextDay);
+        editTextMonth = (EditText) findViewById(R.id.editTextMonth);
+        editTextYear = (EditText) findViewById(R.id.editTextYear);
         textViewPercentGood = (TextView) findViewById(R.id.textViewPercentGood);
         textViewPercentBad = (TextView) findViewById(R.id.textViewPercentBad);
         linearLayoutGood = (LinearLayout) findViewById(R.id.linearLayoutGood);
@@ -105,15 +109,16 @@ public class MainActivity extends AppCompatActivity
     public void buttonCalculateClick(View v) {
         hideKeyboard(this, v);
 
-        String date = editTextDate.getText().toString();
+        String dayStr = editTextDay.getText().toString();
+        String monthStr = editTextMonth.getText().toString();
+        String yearStr = editTextYear.getText().toString();
 
-        if (date == null || date.equals("")) {
+        if (dayStr == null || dayStr.equals("") || monthStr == null || monthStr.equals("") ||yearStr == null || yearStr.equals("")) {
             Toast.makeText(MainActivity.this, R.string.empty_date, Toast.LENGTH_SHORT).show();
-        } else if (checkDateInput(date)) {
-            String[] dateSplitted = date.split("/");
-            int day = Integer.parseInt(dateSplitted[0]);
-            int month = Integer.parseInt(dateSplitted[1]);
-            int year = Integer.parseInt(dateSplitted[2]);
+        } else  {
+            int day = Integer.parseInt(dayStr);
+            int month = Integer.parseInt(monthStr);
+            int year = Integer.parseInt(yearStr);
 
             if (day > 0 && day < 32 && month > 0 && month < 13 && year > 0) {
                 double bad, good;
@@ -138,20 +143,11 @@ public class MainActivity extends AppCompatActivity
             } else {
                 Toast.makeText(MainActivity.this, R.string.invalid_date, Toast.LENGTH_SHORT).show();
             }
-        } else {
-            Toast.makeText(MainActivity.this, R.string.invalid_format, Toast.LENGTH_SHORT).show();
         }
     }
 
     public int sum(int n) {
         return (1 + n) * ((n - 1 + 1) / 2);
-    }
-
-    public boolean checkDateInput(String str) {
-        return (str.length() == 8 || str.length() == 10)
-                && str.indexOf("/") == 2
-                && str.lastIndexOf("/") == 5
-                && str.split("/").length == 3;
     }
 
     public static void hideKeyboard(Context context, View view) {

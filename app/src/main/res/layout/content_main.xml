@@ -18,21 +18,51 @@
         android:layout_height="wrap_content"
         android:text="@string/birth_label" />
 
-    <EditText
-        android:id="@+id/editTextDate"
+    <LinearLayout
+        android:id="@+id/layoutDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewLabel"
-        android:ems="10"
-        android:inputType="date"
-        android:maxLength="10" />
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="date"
+            android:maxLength="2" />
+
+
+        <EditText
+            android:id="@+id/editTextMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="date"
+            android:maxLength="2" />
+
+
+        <EditText
+            android:id="@+id/editTextYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="date"
+            android:maxLength="4" />
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/buttonCalculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/editTextDate"
+        android:layout_below="@+id/layoutDate"
         android:onClick="buttonCalculateClick"
         android:text="@string/submit_button" />
 
