@@ -14,6 +14,12 @@ Everything with this question (*in portuguese*):
   <img src="https://66.media.tumblr.com/8211fc54037f274b564e2e488a889e6d/tumblr_o8ej8bxhOF1vnlnoto1_1280.jpg">
 </p>
 
+## Preview
+
+<p align="center">
+  <img src="https://67.media.tumblr.com/8a09738cd5d814e329a66a278795f347/tumblr_o8ej8bxhOF1vnlnoto3_r1_1280.jpg" width="250">
+</p>
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
